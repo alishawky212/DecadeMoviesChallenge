@@ -38,6 +38,7 @@ dependencies {
     implementation libraries.dagger
     implementation libraries.daggerSupport
     implementation project(path: ':domain')
+    implementation project(path: ':data')
     kapt libraries.daggerProcessor
     kapt libraries.daggerAndroidApt
     implementation libraries.annotations
