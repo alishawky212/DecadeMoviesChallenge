@@ -1,14 +1,15 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-
+apply plugin: 'kotlin-kapt'
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
+
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 29
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
         versionCode 1
         versionName "1.0"
 
@@ -27,10 +28,24 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.2.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation libraries.kotlin
+    implementation libraries.appCompat
+    implementation libraries.geson
+    implementation libraries.annotations
+    implementation libraries.retrofitRxAdapter
+    implementation libraries.retrofit
+    implementation libraries.retrofitConverter
+    implementation libraries.rxJava
+    implementation libraries.rxAndroid
+    implementation libraries.inject
+    androidTestImplementation libraries.achCore
+    testImplementation libraries.mockito_kotlin
+    testImplementation libraries.junit
+    testImplementation libraries.mockitoCore
+    androidTestImplementation libraries.mockito
+    testImplementation libraries.testRules
+    androidTestImplementation libraries.testRunner
+    androidTestImplementation libraries.espressoCore
+    implementation libraries.corektx
+    implementation project(path: ':domain')
 }

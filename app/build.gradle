@@ -1,15 +1,16 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
 
     defaultConfig {
-        applicationId "com.example.decademovieschallenge"
-        minSdkVersion 16
-        targetSdkVersion 29
+        applicationId "com.example.decade_of_movies_challenge"
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
         versionCode 1
         versionName "1.0"
 
@@ -21,17 +22,41 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            testCoverageEnabled true
+        }
     }
 
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation libraries.kotlin
+    implementation libraries.appCompat
+    implementation libraries.material
+    implementation libraries.rxBindingAppCompat
+    implementation libraries.dagger
+    implementation libraries.daggerSupport
+    implementation project(path: ':domain')
+    kapt libraries.daggerProcessor
+    kapt libraries.daggerAndroidApt
+    implementation libraries.annotations
+    implementation libraries.navComponent
+    implementation libraries.navComponentUi
+    implementation libraries.rxJava
+    implementation libraries.rxAndroid
+    implementation libraries.rxJava
+    implementation libraries.rxAndroid
+    implementation libraries.recyclerview
+    implementation libraries.corektx
+    implementation libraries.constraintLayout
+    testImplementation libraries.mockito_kotlin
+    testImplementation libraries.junit
+    testImplementation libraries.achCore
+    androidTestImplementation libraries.roomTest
+    androidTestImplementation libraries.testRunner
+    androidTestImplementation libraries.espressoCore
+    testImplementation libraries.testRules
+    implementation libraries.ifecycleextensions
+    implementation libraries.recyclerviewanimators
 }
