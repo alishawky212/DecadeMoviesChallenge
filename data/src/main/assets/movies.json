@@ -1,0 +1,17 @@
+{
+  "movies": [
+    {
+      "title": "(500) Days of Summer",
+      "year": 2009,
+      "cast": [
+        "Joseph Gordon-Levitt",
+        "Zooey Deschanel"
+      ],
+      "genres": [
+        "Romance",
+        "Comedy"
+      ],
+      "rating": 1
+    }
+  ]
+}
