@@ -6,11 +6,14 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import io.reactivex.Single
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class MoviesDataSourceImpl @Inject constructor(
     private val applicationContext: Application,
     private val gson: Gson
 ) : MoviesDataSource {
+    private val moviesList = ArrayList<Movie>()
     override fun getMovies(): Single<List<Movie>> {
         return Single.create {
             try {
@@ -21,10 +24,20 @@ class MoviesDataSourceImpl @Inject constructor(
                 stream.close()
                 val json = String(buffer)
                 val movie = gson.fromJson<Movie>(json, object : TypeToken<Movie>() {}.type)
+                moviesList.clear()
+                moviesList.addAll(listOf(movie))
                 it.onSuccess(listOf(movie))
             } catch (e: Exception) {
                 it.onError(e)
             }
+        }
+    }
+
+    override fun searchMovies(query: String): Single<List<Movie>> {
+        return Single.create {
+            it.onSuccess(moviesList.filter { movie ->
+                movie.title.equals(query, true)
+            })
         }
     }
 }

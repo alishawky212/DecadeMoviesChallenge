@@ -17,4 +17,10 @@ class MoviesRepositoryImpl @Inject constructor(
                 movieListMapper.map(movies)
             }
 
+    override fun searchMovies(query: String): Single<List<Movie>> {
+        return moviesDataSource.searchMovies(query)
+            .map {movie->
+                movieListMapper.map(movie)
+            }
+    }
 }
