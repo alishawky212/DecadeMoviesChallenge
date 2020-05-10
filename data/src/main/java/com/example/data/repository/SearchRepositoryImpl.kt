@@ -6,8 +6,10 @@ import com.example.domain.model.Photo
 import com.example.domain.repository.SearchRepository
 import io.reactivex.Single
 import javax.inject.Inject
+import javax.inject.Singleton
 
-class SearchRepository @Inject constructor(
+@Singleton
+class SearchRepositoryImpl @Inject constructor(
     private val searchDataSource: SearchDataSource,
     private val photoListMapper: PhotoListMapper
 ) : SearchRepository {

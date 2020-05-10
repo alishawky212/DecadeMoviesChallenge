@@ -6,7 +6,9 @@ import com.example.domain.model.Movie
 import com.example.domain.repository.MoviesRepository
 import io.reactivex.Single
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class MoviesRepositoryImpl @Inject constructor(
     private val moviesDataSource: MoviesDataSource,
     private val movieListMapper: MovieListMapper

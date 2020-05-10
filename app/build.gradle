@@ -15,6 +15,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField 'String', 'BASE_URL', "\"https://api.flickr.com/\""
     }
 
     buildTypes {
@@ -41,6 +43,11 @@ dependencies {
     implementation project(path: ':data')
     kapt libraries.daggerProcessor
     kapt libraries.daggerAndroidApt
+    implementation libraries.okhttpLogger
+    implementation libraries.geson
+    implementation libraries.retrofit
+    implementation libraries.retrofitConverter
+    implementation libraries.retrofitRxAdapter
     implementation libraries.annotations
     implementation libraries.navComponent
     implementation libraries.navComponentUi
