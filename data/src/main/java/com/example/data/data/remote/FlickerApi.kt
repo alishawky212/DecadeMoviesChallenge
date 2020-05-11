@@ -8,7 +8,7 @@ import retrofit2.http.Query
 
 interface FlickerApi {
     @GET("services/rest/")
-    fun searchApi(
+    fun movieImagesApi(
         @Query("method") method: String = "flickr.photos.search",
         @Query("api_key") key: String = BuildConfig.API_KEY,
         @Query("format") format: String = "json",

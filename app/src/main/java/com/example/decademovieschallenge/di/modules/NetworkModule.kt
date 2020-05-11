@@ -1,5 +1,6 @@
 package com.example.decademovieschallenge.di.modules
 
+import com.example.data.data.remote.FlickerApi
 import com.example.decademovieschallenge.BuildConfig
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
@@ -60,6 +61,11 @@ class NetworkModule {
     @Singleton
     fun provideRxJava2CallAdapterFactory(): RxJava2CallAdapterFactory {
         return RxJava2CallAdapterFactory.create()
+    }
+
+    @Provides
+    fun provideFlickerApi(retrofit: Retrofit): FlickerApi {
+        return retrofit.create(FlickerApi::class.java)
     }
 
 }

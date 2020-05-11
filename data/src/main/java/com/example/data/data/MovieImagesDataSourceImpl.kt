@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class MovieImagesDataSourceImpl @Inject constructor(private val flickerApi: FlickerApi) :
     MovieImagesDataSource {
-    override fun search(query: String, page: Int): Single<Photos> {
-        return flickerApi.searchApi(searchQuery = query,page = page)
+    override fun getMovieImages(query: String, page: Int): Single<Photos> {
+        return flickerApi.movieImagesApi(searchQuery = query,page = page)
     }
 }
