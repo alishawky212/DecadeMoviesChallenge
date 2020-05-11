@@ -1,6 +1,6 @@
 package com.example.data.repository
 
-import com.example.data.data.SearchDataSource
+import com.example.data.data.MovieImagesDataSource
 import com.example.data.mapper.PhotoListMapper
 import com.example.domain.model.Photo
 import com.example.domain.repository.ImagesRepository
@@ -10,7 +10,7 @@ import javax.inject.Singleton
 
 @Singleton
 class ImagesRepositoryImpl @Inject constructor(
-    private val searchDataSource: SearchDataSource,
+    private val searchDataSource: MovieImagesDataSource,
     private val photoListMapper: PhotoListMapper
 ) : ImagesRepository {
     override fun getMovieImages(searchQuery: String, page: Int): Single<List<Photo>> {

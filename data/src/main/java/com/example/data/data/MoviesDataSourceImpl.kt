@@ -35,7 +35,7 @@ class MoviesDataSourceImpl @Inject constructor(
         }
     }
 
-    override fun searchMovies(query: String): Observable<Movie> {
+    override fun searchMovies(): Observable<Movie> {
         return Observable.fromIterable(moviesList)
     }
 }
