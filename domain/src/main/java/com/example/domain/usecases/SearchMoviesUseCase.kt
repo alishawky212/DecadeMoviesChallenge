@@ -6,16 +6,12 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class SearchMoviesUseCase @Inject constructor(private val moviesRepository: MoviesRepository) {
-    fun searchMovies(searchQuery: String): Single<Map<Int, List<Movie>>> {
-        return moviesRepository.searchMovies(searchQuery)
-            .flatMap {
-                val sortedList = it.sortedByDescending { movie ->
-                    movie.rating
-                }
-                val map = sortedList.groupBy { movie ->
-                    movie.year
-                }
-                Single.just(map)
-            }
+    fun searchMovies(searchQuery: String): Single<HashMap<Int, List<Movie>>> {
+        return moviesRepository.searchMovies(searchQuery).groupBy {
+            it.year
+        }.flatMapSingle { it.sorted().take(5).toList() }.collect(
+            { HashMap() },
+            { map, movies -> map[movies[0].year] = movies }
+        )
     }
 }
