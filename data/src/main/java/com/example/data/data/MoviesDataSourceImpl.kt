@@ -2,6 +2,7 @@ package com.example.data.data
 
 import android.app.Application
 import com.example.data.model.Movie
+import com.example.data.model.MovieWrapper
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import io.reactivex.Observable
@@ -24,10 +25,10 @@ class MoviesDataSourceImpl @Inject constructor(
                 stream.read(buffer)
                 stream.close()
                 val json = String(buffer)
-                val movie = gson.fromJson<Movie>(json, object : TypeToken<Movie>() {}.type)
+                val wrapper = gson.fromJson<MovieWrapper>(json, object : TypeToken<MovieWrapper>() {}.type)
                 moviesList.clear()
-                moviesList.addAll(listOf(movie))
-                it.onSuccess(listOf(movie))
+                moviesList.addAll(wrapper.movies)
+                it.onSuccess(wrapper.movies)
             } catch (e: Exception) {
                 it.onError(e)
             }
