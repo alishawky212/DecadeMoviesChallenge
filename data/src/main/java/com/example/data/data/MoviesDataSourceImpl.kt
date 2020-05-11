@@ -4,6 +4,7 @@ import android.app.Application
 import com.example.data.model.Movie
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import io.reactivex.Observable
 import io.reactivex.Single
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -34,10 +35,10 @@ class MoviesDataSourceImpl @Inject constructor(
     }
 
     override fun searchMovies(query: String): Single<List<Movie>> {
-        return Single.create {
-            it.onSuccess(moviesList.filter { movie ->
-                movie.title.equals(query, true)
-            })
-        }
+        return Observable.fromIterable(moviesList)
+            .filter{
+                    it.title.contains(query,true)
+            }.toList()
+
     }
 }
