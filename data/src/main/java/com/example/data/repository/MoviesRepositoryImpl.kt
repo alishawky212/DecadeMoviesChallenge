@@ -23,7 +23,7 @@ class MoviesRepositoryImpl @Inject constructor(
             }
 
     override fun searchMovies(query: String): Observable<Movie> {
-        return moviesDataSource.searchMovies(query)
+        return moviesDataSource.searchMovies()
             .filter {
                 it.title.contains(query, true)
             }.map { movie ->
