@@ -37,9 +37,5 @@ class MoviesDataSourceImpl @Inject constructor(
 
     override fun searchMovies(query: String): Observable<Movie> {
         return Observable.fromIterable(moviesList)
-            .filter{
-                    it.title.contains(query,true)
-            }
-
     }
 }

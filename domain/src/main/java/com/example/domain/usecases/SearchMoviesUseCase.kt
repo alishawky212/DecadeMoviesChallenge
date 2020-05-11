@@ -9,9 +9,13 @@ class SearchMoviesUseCase @Inject constructor(private val moviesRepository: Movi
     fun searchMovies(searchQuery: String): Single<HashMap<Int, List<Movie>>> {
         return moviesRepository.searchMovies(searchQuery).groupBy {
             it.year
-        }.flatMapSingle { it.sorted().take(5).toList() }.collect(
-            { HashMap() },
-            { map, movies -> map[movies[0].year] = movies }
+        }.flatMapSingle { it.sorted { t1, t2 ->
+            (t2.rating).compareTo(t1.rating)
+        }.take(5).toList() }.collect(
+            { HashMap<Int,List<Movie>>() },
+            { map, movies ->
+                map[movies[0].year] = movies
+            }
         )
     }
 }

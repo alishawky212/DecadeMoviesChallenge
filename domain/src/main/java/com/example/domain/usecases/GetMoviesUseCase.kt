@@ -7,8 +7,6 @@ import javax.inject.Inject
 
 class GetMoviesUseCase @Inject constructor(private val moviesRepository: MoviesRepository) {
     fun getMovies():Single<List<Movie>>{
-        return moviesRepository.getMovies().map {
-            it.shuffled()
-        }
+        return moviesRepository.getMovies()
     }
 }
