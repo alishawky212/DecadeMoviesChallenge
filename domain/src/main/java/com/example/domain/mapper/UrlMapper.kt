@@ -5,6 +5,6 @@ import javax.inject.Inject
 
 class UrlMapper @Inject constructor() : Mapper<Photo, String> {
     override fun map(input: Photo): String =
-        "http://farm${input.farm}.static.flickr.com/${input.server}/${input.id}_${input.secret}.jpg\n"
+        "http://farm${input.farm}.static.flickr.com/${input.server}/${input.id}_${input.secret}.jpg"
 
 }
