@@ -1,6 +1,7 @@
 package com.example.decademovieschallenge.di
 
 import com.example.decademovieschallenge.MyApplication
+import com.example.decademovieschallenge.di.builders.FragmentBuilder
 import com.example.decademovieschallenge.di.modules.*
 import dagger.BindsInstance
 import dagger.Component
@@ -12,7 +13,8 @@ import javax.inject.Singleton
     modules = [
         AndroidSupportInjectionModule::class, NetworkModule::class,
         SchedulersModule::class, RepositoryModule::class,
-        AppModule::class, DataSourceModule::class]
+        AppModule::class, DataSourceModule::class,
+        FragmentBuilder::class,ViewModelModule::class]
 )
 interface ApplicationComponent {
     fun inject(app: MyApplication)

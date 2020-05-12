@@ -94,6 +94,7 @@ ext {
             ifecycleextensions   : "androidx.lifecycle:lifecycle-extensions:$versions.archCore",
             recyclerviewanimators: "jp.wasabeef:recyclerview-animators:$versions.recyclerviewanimators",
             lottieAnimation      : "com.airbnb.android:lottie:3.4.0",
+            shimmerView          : "com.facebook.shimmer:shimmer:${versions.shimmer_version}",
 
 
             rxAndroid            : "io.reactivex.rxjava2:rxandroid:${versions.rxAndroid}",

@@ -17,22 +17,30 @@ class MoviesDataSourceImpl @Inject constructor(
 ) : MoviesDataSource {
     private val moviesList = ArrayList<Movie>()
     override fun getMovies(): Single<List<Movie>> {
-        return Single.create {
-            try {
-                val stream = applicationContext.assets.open("movies.json")
-                val size: Int = stream.available()
-                val buffer = ByteArray(size)
-                stream.read(buffer)
-                stream.close()
-                val json = String(buffer)
-                val wrapper = gson.fromJson<MovieWrapper>(json, object : TypeToken<MovieWrapper>() {}.type)
-                moviesList.clear()
-                moviesList.addAll(wrapper.movies)
-                it.onSuccess(wrapper.movies)
-            } catch (e: Exception) {
-                it.onError(e)
+        if (moviesList.isEmpty()) {
+            return Single.create {
+                try {
+                    val stream = applicationContext.assets.open("movies.json")
+                    val size: Int = stream.available()
+                    val buffer = ByteArray(size)
+                    stream.read(buffer)
+                    stream.close()
+                    val json = String(buffer)
+                    val wrapper = gson.fromJson<MovieWrapper>(
+                        json,
+                        object : TypeToken<MovieWrapper>() {}.type
+                    )
+                    moviesList.clear()
+                    moviesList.addAll(wrapper.movies)
+                    it.onSuccess(wrapper.movies)
+                } catch (e: Exception) {
+                    it.onError(e)
+                }
             }
+        } else {
+            return Single.just(moviesList)
         }
+
     }
 
     override fun searchMovies(): Observable<Movie> {

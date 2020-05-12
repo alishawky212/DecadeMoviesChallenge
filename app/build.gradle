@@ -43,6 +43,7 @@ dependencies {
     implementation project(path: ':data')
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation libraries.lottieAnimation
+    implementation libraries.shimmerView
     kapt libraries.daggerProcessor
     kapt libraries.daggerAndroidApt
     implementation libraries.okhttpLogger
