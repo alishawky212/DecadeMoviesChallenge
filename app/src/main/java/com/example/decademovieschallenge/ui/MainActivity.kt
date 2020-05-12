@@ -1,7 +1,8 @@
-package com.example.decademovieschallenge
+package com.example.decademovieschallenge.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.decademovieschallenge.R
 
 class MainActivity : AppCompatActivity() {
 

@@ -64,7 +64,7 @@ ext {
             kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin_version}",
 
             retrofit           : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
-            inject                : "javax.inject:javax.inject:${versions.inject}" ,
+            inject                : "javax.inject:javax.inject:${versions.inject}",
             retrofitConverter  : "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
             annotations           : "com.android.support:support-annotations:${versions.appCompat}",
             geson              : "com.google.code.gson:gson:${versions.geson}",
@@ -87,21 +87,22 @@ ext {
             rxJavaRoom         : "androidx.room:room-rxjava2:${versions.room_version}",
 
             dagger             : "com.google.dagger:dagger:${versions.dagger}",
-            daggerSupport      : "com.google.dagger:dagger-android-support:${versions.dagger}",
-            daggerProcessor    : "com.google.dagger:dagger-compiler:${versions.dagger}",
-            daggerAndroidApt   : "com.google.dagger:dagger-android-processor:${versions.dagger}",
-            retrofitRxAdapter     : "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofitRxAdapter",
-            ifecycleextensions: "androidx.lifecycle:lifecycle-extensions:$versions.archCore",
-            recyclerviewanimators : "jp.wasabeef:recyclerview-animators:$versions.recyclerviewanimators",
+            daggerSupport        : "com.google.dagger:dagger-android-support:${versions.dagger}",
+            daggerProcessor      : "com.google.dagger:dagger-compiler:${versions.dagger}",
+            daggerAndroidApt     : "com.google.dagger:dagger-android-processor:${versions.dagger}",
+            retrofitRxAdapter    : "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofitRxAdapter",
+            ifecycleextensions   : "androidx.lifecycle:lifecycle-extensions:$versions.archCore",
+            recyclerviewanimators: "jp.wasabeef:recyclerview-animators:$versions.recyclerviewanimators",
+            lottieAnimation      : "com.airbnb.android:lottie:3.4.0",
 
 
-            rxAndroid          : "io.reactivex.rxjava2:rxandroid:${versions.rxAndroid}",
-            rxJava             : "io.reactivex.rxjava2:rxjava:${versions.rxJava}",
-            rxBindingAppCompat : "com.jakewharton.rxbinding3:rxbinding-appcompat:${versions.rxBindingAppCompat}",
+            rxAndroid            : "io.reactivex.rxjava2:rxandroid:${versions.rxAndroid}",
+            rxJava               : "io.reactivex.rxjava2:rxjava:${versions.rxJava}",
+            rxBindingAppCompat   : "com.jakewharton.rxbinding3:rxbinding-appcompat:${versions.rxBindingAppCompat}",
 
-            okhttp             : "com.squareup.okhttp3:okhttp:${versions.okhttp}",
-            okhttpLogger       : "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}",
-            viewPager2         : "androidx.viewpager2:viewpager2:1.0.0-rc01",
+            okhttp               : "com.squareup.okhttp3:okhttp:${versions.okhttp}",
+            okhttpLogger         : "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}",
+            viewPager2           : "androidx.viewpager2:viewpager2:1.0.0-rc01",
 
             // For testing
             junit              : "junit:junit:${versions.junit}",
