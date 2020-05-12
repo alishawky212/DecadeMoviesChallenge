@@ -74,17 +74,24 @@ class MasterFragment : Fragment() {
         val search: SearchView = menu.findItem(R.id.app_bar_search).actionView as SearchView
 
         search.onQueryTextListener {
-            if (it.isNullOrEmpty()) {
-                viewModel.getMovies()
-            } else {
                 viewModel.searchMovies(it)
-            }
         }
 
         search.setOnCloseListener {
             viewModel.getMovies()
-            return@setOnCloseListener true
+            return@setOnCloseListener false
         }
+        searchMenuItem?.setOnActionExpandListener(object :MenuItem.OnActionExpandListener{
+            override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
+                return true
+            }
+
+            override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
+                viewModel.getMovies()
+                return true
+            }
+
+        })
         super.onCreateOptionsMenu(menu, inflater)
     }
 
@@ -115,6 +122,7 @@ class MasterFragment : Fragment() {
     }
 
     private fun showLoading() {
+        noData.isVisible = false
         rcMovies.isVisible = false
         shimmer_view.isVisible = true
         val builder = Shimmer.AlphaHighlightBuilder()
@@ -127,11 +135,21 @@ class MasterFragment : Fragment() {
     private fun stopLoading() {
         shimmer_view.isVisible = false
         shimmer_view.stopShimmer()
-        rcMovies.isVisible = true
     }
 
     private fun showData(items: List<ListItem>) {
-        moviesAdapter.setData(items)
+        if (items.isEmpty()) {
+            noData.isVisible = true
+            rcMovies.isVisible = false
+            noData.apply {
+                repeatCount = 5
+                playAnimation()
+            }
+        } else {
+            rcMovies.isVisible = true
+            noData.isVisible = false
+            moviesAdapter.setData(items)
+        }
     }
 
     private fun initMatchesRecyclerView() {
