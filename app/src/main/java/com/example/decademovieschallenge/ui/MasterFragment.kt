@@ -76,6 +76,7 @@ class MasterFragment : Fragment() {
         val search: SearchView = menu.findItem(R.id.app_bar_search).actionView as SearchView
 
         search.onQueryTextListener {
+            if (it.isNotBlank())
                 viewModel.searchMovies(it)
         }
 
