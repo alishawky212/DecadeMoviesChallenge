@@ -5,4 +5,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="search">Search</string>
+    <string name="release_date">Release Date :</string>
+    <string name="sorry_no_data_available">Sorry No Photos Available</string>
+    <string name="movie_photo">Movie Photo</string>
+    <string name="genres">Genres :</string>
+    <string name="starring">Starring :</string>
 </resources>

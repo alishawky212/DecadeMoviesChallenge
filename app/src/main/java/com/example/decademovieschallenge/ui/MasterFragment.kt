@@ -11,6 +11,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.decademovieschallenge.R
@@ -37,6 +38,10 @@ class MasterFragment : Fragment() {
 
     private var searchMenuItem: MenuItem? = null
 
+    private val moviesObserver = Observer<UiState<ListItem>> {
+        render(it)
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,10 +50,6 @@ class MasterFragment : Fragment() {
         viewModel = ViewModelProviders.of(this, viewModelFactory)[MoviesViewModel::class.java]
 
         viewModel.getMovies()
-
-        viewModel.moviesLiveData.observe(this, Observer {
-            render(it)
-        })
 
         setHasOptionsMenu(true)
 
@@ -64,6 +65,7 @@ class MasterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.moviesLiveData.observe(viewLifecycleOwner, moviesObserver)
         initMatchesRecyclerView()
     }
 
@@ -155,6 +157,10 @@ class MasterFragment : Fragment() {
     private fun initMatchesRecyclerView() {
         rcMovies.layoutManager = LinearLayoutManager(context)
         rcMovies.adapter = moviesAdapter
+        moviesAdapter.setOnMovieHandler {
+            Navigation.findNavController(requireView())
+                .navigate(MasterFragmentDirections.actionMasterFragmentToDetailFragment(it))
+        }
         val mDivider = ContextCompat.getDrawable(requireContext(), R.drawable.divider)
         val hItemDecoration = DividerItemDecoration(
             requireContext(),

@@ -6,5 +6,17 @@
     <fragment
         android:id="@+id/masterFragment"
         android:name="com.example.decademovieschallenge.ui.MasterFragment"
-        android:label="MasterFragment" />
+        android:label="MasterFragment" >
+        <action
+            android:id="@+id/action_masterFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.decademovieschallenge.ui.DetailFragment"
+        android:label="DetailFragment" >
+        <argument
+            android:name="movieItem"
+            app:argType="com.example.decademovieschallenge.model.MovieItem" />
+    </fragment>
 </navigation>

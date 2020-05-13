@@ -1,11 +1,11 @@
 package com.example.domain.model
 
 data class Photo(
-    val id: Int,
+    val id: Long,
     val owner: String,
     val secret: String,
-    val server: Int,
-    val farm: Int,
+    val server: Long,
+    val farm: Long,
     val title: String,
     val isPublic: Int,
     val isFriend: Int,

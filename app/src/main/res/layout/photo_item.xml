@@ -1,0 +1,18 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="6dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:contentDescription="@string/movie_photo"
+        android:scaleType="fitXY"
+        android:id="@+id/movie_photo"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+</androidx.cardview.widget.CardView>

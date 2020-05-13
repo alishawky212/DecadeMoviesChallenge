@@ -16,7 +16,7 @@ class ImagesRepositoryImpl @Inject constructor(
     override fun getMovieImages(searchQuery: String, page: Int): Single<List<Photo>> {
         return searchDataSource.getMovieImages(searchQuery, page)
             .map { photos ->
-                photoListMapper.map(photos.photo)
+                photoListMapper.map(photos.photos.photo)
             }
     }
 }

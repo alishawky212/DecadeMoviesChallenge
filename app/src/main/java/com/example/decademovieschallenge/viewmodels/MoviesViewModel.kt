@@ -61,4 +61,9 @@ class MoviesViewModel @Inject constructor(
                 })
         )
     }
+
+    override fun onCleared() {
+        super.onCleared()
+        compositeDisposable.clear()
+    }
 }

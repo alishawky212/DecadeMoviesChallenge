@@ -1,6 +1,5 @@
 package com.example.data.mapper
 
-import com.example.data.model.Movie
 import com.example.data.model.Photo
 import com.example.domain.mapper.Mapper
 import javax.inject.Inject

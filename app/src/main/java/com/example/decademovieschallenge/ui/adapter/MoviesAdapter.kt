@@ -21,6 +21,8 @@ class MoviesAdapter @Inject constructor() : RecyclerView.Adapter<BaseListViewHol
 
     private val moviesList = mutableListOf<ListItem>()
 
+    private var onMovieClickHandler: ((uiModel: MovieItem) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseListViewHolder {
         return when (viewType) {
             TYPE_GENERAL -> MovieViewHolder(parent.inflate(R.layout.movie_list_item))
@@ -52,12 +54,19 @@ class MoviesAdapter @Inject constructor() : RecyclerView.Adapter<BaseListViewHol
         diffResult.dispatchUpdatesTo(this)
     }
 
+    fun setOnMovieHandler(handler: (uiModel: MovieItem) -> Unit){
+        this.onMovieClickHandler = handler
+    }
+
     inner class MovieViewHolder(itemView: View) : BaseListViewHolder(itemView) {
         override fun bind(item: ListItem) {
             item as MovieItem
             with(itemView) {
                 tvMovieName.text = item.title
                 movieRating.text = item.rate.toString()
+                setOnClickListener {
+                    onMovieClickHandler?.invoke(item)
+                }
             }
         }
 

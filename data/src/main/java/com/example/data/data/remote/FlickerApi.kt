@@ -1,7 +1,7 @@
 package com.example.data.data.remote
 
 import com.example.data.BuildConfig
-import com.example.data.model.Photos
+import com.example.data.model.PhotosWrapper
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -16,5 +16,5 @@ interface FlickerApi {
         @Query("text") searchQuery: String,
         @Query("page") page: Int,
         @Query("per_page") perPage: Int = 10
-    ): Single<Photos>
+    ): Single<PhotosWrapper>
 }
