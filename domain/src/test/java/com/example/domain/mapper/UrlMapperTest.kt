@@ -21,7 +21,7 @@ class UrlMapperTest {
             isFamily = 1,
             farm = 2
         )
-        val expectedUrl =  "http://farm2.static.flickr.com/3/2_Photo2Secret.jpg"
+        val expectedUrl =  "https://farm2.static.flickr.com/3/2_Photo2Secret.jpg"
         val url = mapper.map(testPhoto)
 
         assertTrue(url == expectedUrl)
