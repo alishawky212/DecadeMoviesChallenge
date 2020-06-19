@@ -2,7 +2,7 @@
 
 name: Android CI
 
-  on:
+on:
     push:
       branches: [ master ]
     pull_request:
@@ -22,7 +22,7 @@ jobs:
       - name: Unit tests
         run: bash ./gradlew test --stacktrace
 
-  build:
+build:
     name: Generate APK
     runs-on: ubuntu-latest
 
