@@ -1,4 +1,6 @@
-name: android
+# This is a basic workflow to help you get started with Actions
+
+name: Android CI
 
   on:
     push:
@@ -6,10 +8,10 @@ name: android
     pull_request:
       branches: [ master ]
 
-  jobs:
-    test:
-      name: Run Unit Tests
-      runs-on: ubuntu-latest
+jobs:
+  test:
+    name: Run Unit Tests
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
