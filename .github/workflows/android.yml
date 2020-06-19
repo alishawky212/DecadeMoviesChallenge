@@ -20,9 +20,9 @@ jobs:
       - name: Unit tests
         run: bash ./gradlew test --stacktrace
 
-build:
-  name: Generate APK
-  runs-on: ubuntu-latest
+  apk:
+    name: Generate APK
+    runs-on: ubuntu-18.04
 
   steps:
     - uses: actions/checkout@v2
