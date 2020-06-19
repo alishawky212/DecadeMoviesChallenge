@@ -9,8 +9,8 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,22 +19,20 @@ import com.example.decademovieschallenge.model.ListItem
 import com.example.decademovieschallenge.model.UiState
 import com.example.decademovieschallenge.ui.adapter.MoviesAdapter
 import com.example.decademovieschallenge.viewmodels.MoviesViewModel
-import com.example.decademovieschallenge.viewmodels.ViewModelFactory
 import com.facebook.shimmer.Shimmer
-import dagger.android.support.AndroidSupportInjection
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_master.*
 import javax.inject.Inject
 
 
+@AndroidEntryPoint
 class MasterFragment : Fragment() {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
 
     @Inject
     lateinit var moviesAdapter: MoviesAdapter
 
-    private lateinit var viewModel: MoviesViewModel
+    private val viewModel: MoviesViewModel by viewModels()
 
     private var searchMenuItem: MenuItem? = null
 
@@ -45,9 +43,6 @@ class MasterFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        AndroidSupportInjection.inject(this)
-        viewModel = ViewModelProviders.of(this, viewModelFactory)[MoviesViewModel::class.java]
 
         viewModel.getMovies()
 
