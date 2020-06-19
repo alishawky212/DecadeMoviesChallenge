@@ -116,7 +116,7 @@ fun createPhotoTestData():List<Photo>{
 }
 
 fun createPhotoTestUrls():List<String>{
-    val url1 =  "http://farm1.static.flickr.com/2/1_Photo1Secret.jpg"
-    val url2 =  "http://farm2.static.flickr.com/3/2_Photo2Secret.jpg"
+    val url1 =  "https://farm1.static.flickr.com/2/1_Photo1Secret.jpg"
+    val url2 =  "https://farm2.static.flickr.com/3/2_Photo2Secret.jpg"
     return listOf(url1,url2)
 }
