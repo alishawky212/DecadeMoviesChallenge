@@ -15,3 +15,7 @@
 .idea/vcs.xml
 .idea/gradle.xml
 .idea/sonarlint/issuestore/
+.idea/misc.xml
+.idea/jarRepositories.xml
+.idea/gradle.xml
+.idea/compiler.xml
