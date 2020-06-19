@@ -5,6 +5,7 @@ import com.example.data.data.MovieImagesDataSource
 import com.example.data.data.MoviesDataSource
 import com.example.data.mapper.PhotoListMapper
 import com.example.data.mapper.PhotoMapper
+import com.example.data.model.PhotosWrapper
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import io.reactivex.Single
@@ -31,7 +32,7 @@ class ImagesRepositoryImplTest {
     @Test
     fun getMovieImages() {
         Mockito.`when`(moviesImagesDataSource.getMovieImages("",1))
-            .thenReturn(Single.just(apiResponsePhoto))
+            .thenReturn(Single.just(PhotosWrapper(apiResponsePhoto)))
 
         val test = repositoryImpl.getMovieImages("",1).test()
 
