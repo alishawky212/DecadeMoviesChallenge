@@ -6,10 +6,10 @@ name: Android CI
     pull_request:
       branches: [ master ]
 
-jobs:
-  test:
-    name: Run Unit Tests
-    runs-on: ubuntu-latest
+  jobs:
+    test:
+      name: Run Unit Tests
+      runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
