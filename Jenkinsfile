@@ -13,6 +13,11 @@ pipeline {
             sh "./gradlew testDebugUnitTest"
             }
         }
+        stage('UI tests'){
+            steps {
+            sh "./gradlew connectedDebugAndroidTest"
+            }
+        }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
