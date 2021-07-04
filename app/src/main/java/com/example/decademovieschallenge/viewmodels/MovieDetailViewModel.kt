@@ -1,5 +1,6 @@
 package com.example.decademovieschallenge.viewmodels
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,7 +12,7 @@ import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 import javax.inject.Named
 
-class MovieDetailViewModel @Inject constructor(
+class MovieDetailViewModel @ViewModelInject constructor(
     @Named(value = IO_SCHEDULER) private val ioScheduler: Scheduler,
     private val useCase: GetMovieImagesUseCase
 ) : ViewModel() {
